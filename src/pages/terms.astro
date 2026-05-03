@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+
+const lastUpdated = "May 1, 2026";
+---
+
+<BaseLayout
+  title="Terms of Use"
+  description="Foxride Technologies Terms of Use — terms and conditions governing your use of our website and services."
+>
+  <PageBanner
+    label="Legal"
+    title="TERMS"
+    highlight="OF USE"
+    subtitle={`Last updated: ${lastUpdated}`}
+    breadcrumbs={[{ label: "Terms of Use", href: "/terms" }]}
+    bgColor="#061523"
+  />
+
+  <section class="py-24 bg-white circuit-bg">
+    <div class="max-w-3xl mx-auto px-6 lg:px-12">
+      <div class="space-y-8">
+        <div class="reveal">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">1. Acceptance of Terms</h2>
+          <p class="text-[#374151] leading-relaxed">
+            By accessing and using the Foxride Technologies website, you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use this website.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">2. Use of Website</h2>
+          <p class="text-[#374151] leading-relaxed mb-4">You agree to use this website only for lawful purposes and in a way that does not infringe the rights of others or restrict their use and enjoyment of the website. You may not:</p>
+          <ul class="text-[#374151] leading-relaxed space-y-2 ml-4">
+            <li>Use the website in any way that causes damage or impairs its functionality</li>
+            <li>Attempt to gain unauthorized access to any portion of the website</li>
+            <li>Use automated systems to access the website without prior written consent</li>
+            <li>Transmit any malicious code or viruses</li>
+          </ul>
+        </div>
+
+        <div class="reveal" data-delay="120">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">3. Intellectual Property</h2>
+          <p class="text-[#374151] leading-relaxed">
+            All content on this website, including text, graphics, logos, images, and software, is the property of Foxride Technologies or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without express written consent.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="160">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">4. Service Descriptions</h2>
+          <p class="text-[#374151] leading-relaxed">
+            The service descriptions on this website are for informational purposes only. Actual service offerings, pricing, and terms are subject to individual service agreements. We reserve the right to modify service offerings at any time.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="200">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">5. Limitation of Liability</h2>
+          <p class="text-[#374151] leading-relaxed">
+            Foxride Technologies shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the website or our services. Our total liability shall not exceed the amount paid by you for the specific service giving rise to the claim.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="240">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">6. Third-Party Links</h2>
+          <p class="text-[#374151] leading-relaxed">
+            Our website may contain links to third-party websites. These links are provided for your convenience only. We have no control over the content of these sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="280">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">7. Modifications</h2>
+          <p class="text-[#374151] leading-relaxed">
+            We reserve the right to modify these Terms of Use at any time. Changes will be effective immediately upon posting to the website. Your continued use of the website after changes constitutes acceptance of the modified terms.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="320">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">8. Governing Law</h2>
+          <p class="text-[#374151] leading-relaxed">
+            These Terms of Use shall be governed by and construed in accordance with the laws of India. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts in Mumbai, Maharashtra.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="360">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">9. Contact</h2>
+          <p class="text-[#374151] leading-relaxed">
+            For questions about these Terms of Use, please contact us at <a href="mailto:support@foxride.co.in" class="text-[#0d5578] hover:underline">support@foxride.co.in</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

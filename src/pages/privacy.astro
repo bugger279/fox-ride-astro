@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+
+const lastUpdated = "May 1, 2026";
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Foxride Technologies Privacy Policy — how we collect, use, and protect your personal information."
+>
+  <PageBanner
+    label="Legal"
+    title="PRIVACY"
+    highlight="POLICY"
+    subtitle={`Last updated: ${lastUpdated}`}
+    breadcrumbs={[{ label: "Privacy Policy", href: "/privacy" }]}
+    bgColor="#061523"
+  />
+
+  <section class="py-24 bg-white circuit-bg">
+    <div class="max-w-3xl mx-auto px-6 lg:px-12">
+      <div class="space-y-8">
+        <div class="reveal">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">1. Information We Collect</h2>
+          <p class="text-[#374151] leading-relaxed">
+            We collect information you provide directly to us, including name, email address, phone number, company name, and any other information you choose to provide through our contact forms, email communications, or phone calls.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">2. How We Use Your Information</h2>
+          <p class="text-[#374151] leading-relaxed mb-4">We use the information we collect to:</p>
+          <ul class="text-[#374151] leading-relaxed space-y-2 ml-4">
+            <li>Provide, maintain, and improve our services</li>
+            <li>Respond to your inquiries and provide customer support</li>
+            <li>Send you technical notices and support messages</li>
+            <li>Communicate with you about products, services, and events</li>
+            <li>Comply with legal obligations</li>
+          </ul>
+        </div>
+
+        <div class="reveal" data-delay="120">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">3. Information Sharing</h2>
+          <p class="text-[#374151] leading-relaxed">
+            We do not sell, trade, or rent your personal information to third parties. We may share your information with trusted service providers who assist us in operating our website and conducting our business, subject to confidentiality agreements.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="160">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">4. Data Security</h2>
+          <p class="text-[#374151] leading-relaxed">
+            We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="200">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">5. Cookies</h2>
+          <p class="text-[#374151] leading-relaxed">
+            Our website uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. You can choose to disable cookies through your browser settings, though this may affect site functionality.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="240">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">6. Your Rights</h2>
+          <p class="text-[#374151] leading-relaxed">
+            You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at support@foxride.co.in. We will respond to your request within 30 days.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="280">
+          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-4">7. Contact Us</h2>
+          <p class="text-[#374151] leading-relaxed">
+            If you have questions about this Privacy Policy, please contact us at <a href="mailto:support@foxride.co.in" class="text-[#0d5578] hover:underline">support@foxride.co.in</a> or call us at +91 9619434073.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

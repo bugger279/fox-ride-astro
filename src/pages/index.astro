@@ -1,11 +1,229 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { services } from "../data/services";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const stats = [
+  { num: "5+", label: "Years of Experience", color: "#0d5578" },
+  { num: "250+", label: "Happy Clients Across India", color: "#e31e24" },
+  { num: "99.99%", label: "Uptime SLA", color: "#0d5578" },
+  { num: "1100+", label: "Issues Resolved", color: "#e31e24" },
+];
+
+const clients = [
+  "AMITY University",
+  "PVR Cinemas",
+  "Aditya Birla Group",
+  "TATA Communications",
+  "Reliance Industries",
+  "HDFC Bank",
+];
+
+function serviceIconSVG(icon: string): string {
+  const icons: Record<string, string> = {
+    shield: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    settings: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+    cloud: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
+    phone: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
+    network: "M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0",
+    server: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
+  };
+  const d = icons[icon] || icons.shield;
+  return `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="${d}"/>`;
+}
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Foxride Technologies"
+  description="Foxride Technologies – Smart, secure, and scalable IT solutions for MSMEs across India. Cloud, Security, Managed Services, Telecom, and Internet Leased Lines."
+>
+  <!-- ═══ HERO -->
+  <section class="relative min-h-screen flex items-center bg-[#061523] overflow-hidden">
+    <div class="circuit-bg absolute inset-0 opacity-20"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-[#061523] via-[#061523]/95 to-[#0d5578]/30"></div>
+    
+    <!-- Diagonal accent -->
+    <div class="absolute bottom-0 left-0 right-0 h-24 bg-white" style="clip-path: polygon(0 100%, 100% 0, 100% 100%);"></div>
+    
+    <!-- Left red bar -->
+    <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
+    
+    <!-- Animated grid dots -->
+    <div class="absolute right-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3 opacity-10">
+      {Array.from({ length: 6 }).map(() => (
+        <div class="flex gap-3">
+          {Array.from({ length: 6 }).map(() => (
+            <div class="w-2 h-2 rounded-full bg-white" />
+          ))}
+        </div>
+      ))}
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="section-label text-white/60 reveal">Authorized TATA Tele Business Partner</div>
+          <h1 class="font-display font-bold text-white leading-tight mb-6 reveal" style="font-size: clamp(2.8rem, 5.5vw, 5rem);" data-delay="100">
+            VALUE<br /><span class="text-[#e31e24]">BEYOND</span><br />CONNECTIONS
+          </h1>
+          <p class="text-white/60 text-lg leading-relaxed mb-10 reveal" data-delay="200">
+            Empowering MSMEs with smart, secure, and scalable IT infrastructure across India — from cloud and security to leased lines and managed services.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 reveal" data-delay="300">
+            <a href="/services" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#b81820] transition-colors text-center">
+              Explore Services
+            </a>
+            <a href="/contact" class="btn-clip border-2 border-white/40 text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:border-white transition-colors text-center">
+              Get a Quote
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4 reveal" data-delay="200">
+          {stats.map((stat) => (
+            <div class="bg-[#0d1e35] border border-white/8 p-6 relative overflow-hidden group hover:border-[#0d5578]/40 transition-colors" style={`border-top: 3px solid ${stat.color};`}>
+              <div class="absolute top-0 left-0 w-1 h-full" style={`background: ${stat.color};`}></div>
+              <div class="font-display font-bold text-white text-4xl leading-none mb-1">{stat.num}</div>
+              <div class="text-white/40 text-xs tracking-wide leading-relaxed">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES OVERVIEW -->
+  <section class="py-24 bg-white circuit-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <div class="section-label justify-center reveal">What We Offer</div>
+        <h2 class="font-display font-bold text-[#061523] leading-tight reveal" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+          END-TO-END <span class="text-[#0d5578]">IT SOLUTIONS</span>
+        </h2>
+        <p class="text-[#6b7280] max-w-2xl mx-auto mt-4 reveal" data-delay="100">
+          From network infrastructure to cloud migration, security to telecom — we deliver comprehensive IT services tailored for your business growth.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service, i) => (
+          <a href={`/services/${service.slug}`} class="group border border-[#e2eaf2] p-8 hover:border-[#0d5578] hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-white reveal" data-delay={i * 80}>
+            <div class="absolute top-0 left-0 w-1 h-full bg-[#e31e24] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+            
+            <div class="w-14 h-14 bg-[#0d5578]/8 border border-[#0d5578]/20 flex items-center justify-center mb-5 group-hover:bg-[#0d5578] transition-colors duration-300">
+              <svg class="w-6 h-6 text-[#0d5578] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" set:html={serviceIconSVG(service.icon)} />
+            </div>
+            <div class="font-display text-xs tracking-widest uppercase text-[#e31e24] mb-1">{service.tagline}</div>
+            <h3 class="font-display font-bold text-[#061523] text-lg tracking-wide mb-3 group-hover:text-[#0d5578] transition-colors">{service.title.toUpperCase()}</h3>
+            <p class="text-[#6b7280] text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
+            <div class="flex items-center gap-2 text-[#e31e24] font-display font-semibold text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
+              Learn More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="/services" class="btn-clip bg-[#0d5578] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#093d57] transition-colors inline-block">
+          View All Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY CHOOSE US -->
+  <section class="py-20 bg-[#061523] relative overflow-hidden">
+    <div class="circuit-bg absolute inset-0 opacity-20"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="section-label reveal">Why Foxride</div>
+          <h2 class="font-display font-bold text-white leading-tight mb-6 reveal" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+            YOUR TRUSTED <span class="text-[#e31e24]">IT PARTNER</span>
+          </h2>
+          <p class="text-white/60 leading-relaxed mb-8 reveal" data-delay="100">
+            With 5+ years in the industry, 250+ satisfied clients, and a 99.99% uptime track record — we deliver IT solutions that are reliable, cost-effective, and built to scale with your business.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal" data-delay="150">
+            {[
+              { title: "24/7 Support", desc: "Round-the-clock NOC monitoring and rapid incident response" },
+              { title: "Certified Experts", desc: "Team of certified engineers with deep domain expertise" },
+              { title: "Transparent Pricing", desc: "No hidden costs — predictable monthly IT spend" },
+              { title: "PAN India Coverage", desc: "Nationwide service delivery with local expertise" },
+            ].map((item) => (
+              <div class="bg-[#0d1e35] border border-white/8 p-5 group hover:border-[#0d5578]/40 transition-colors">
+                <div class="w-8 h-8 bg-[#e31e24]/20 border border-[#e31e24]/40 flex items-center justify-center mb-3 group-hover:bg-[#e31e24] transition-colors">
+                  <svg class="w-4 h-4 text-[#e31e24] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div class="font-display font-bold text-white text-sm tracking-wide mb-1">{item.title}</div>
+                <div class="text-white/40 text-xs leading-relaxed">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- TATA Partnership -->
+        <div class="bg-[#0d5578] p-10 relative overflow-hidden reveal" data-delay="200">
+          <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
+          <div class="absolute bottom-4 right-6 font-display text-9xl font-bold text-white/5 leading-none select-none">T</div>
+          <div class="section-label text-white/60 mb-4">Official Partnership</div>
+          <h3 class="font-display font-bold text-white text-2xl tracking-wide mb-4">AUTHORIZED CHANNEL PARTNER</h3>
+          <p class="text-white/70 leading-relaxed mb-6">
+            Foxride Technologies is an authorized channel partner of TATA Tele Business Services, bringing enterprise-grade connectivity and cloud services to businesses of all sizes.
+          </p>
+          <a href="/contact" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-6 py-3 text-sm hover:bg-[#b81820] transition-colors inline-block">
+            Partner with Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CLIENTS -->
+  <section id="clients" class="py-24 bg-[#f0f4f8]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <div class="section-label justify-center reveal">Trusted By</div>
+        <h2 class="font-display font-bold text-[#061523] leading-tight reveal" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+          OUR <span class="text-[#0d5578]">CLIENTS</span>
+        </h2>
+        <p class="text-[#6b7280] max-w-2xl mx-auto mt-4 reveal" data-delay="100">
+          From leading enterprises to growing MSMEs, we partner with organizations that demand excellence.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 reveal" data-delay="150">
+        {clients.map((client) => (
+          <div class="bg-white border border-[#e2eaf2] p-6 flex items-center justify-center text-center hover:border-[#0d5578] hover:shadow-md transition-all group">
+            <div class="font-display font-bold text-[#6b7280] text-sm tracking-wide group-hover:text-[#0d5578] transition-colors">
+              {client}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA -->
+  <section class="py-20 bg-[#0d5578] relative overflow-hidden">
+    <div class="circuit-bg absolute inset-0 opacity-20"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
+    <div class="relative max-w-4xl mx-auto px-6 lg:px-12 text-center">
+      <h2 class="font-display font-bold text-white text-4xl tracking-wide mb-4 reveal">READY TO TRANSFORM YOUR IT?</h2>
+      <p class="text-white/60 text-lg mb-10 reveal" data-delay="100">
+        Talk to our experts today. We'll assess your needs and build a tailored solution that fits your budget and scale.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center reveal" data-delay="200">
+        <a href="/contact" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-10 py-4 text-sm hover:bg-[#b81820] transition-colors">
+          Get a Free Consultation
+        </a>
+        <a href="tel:+919619434073" class="btn-clip border-2 border-white/40 text-white font-display font-bold tracking-widest uppercase px-10 py-4 text-sm hover:border-white transition-colors">
+          +91 96194 34073
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

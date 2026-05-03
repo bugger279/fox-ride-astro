@@ -1,0 +1,96 @@
+---
+// src/components/PageBanner.astro
+interface Props {
+  label: string;
+  title: string;
+  highlight?: string;
+  subtitle?: string;
+  breadcrumbs?: { label: string; href: string }[];
+  bgColor?: string;
+}
+
+const {
+  label,
+  title,
+  highlight = "",
+  subtitle = "",
+  breadcrumbs = [],
+  bgColor = "#061523",
+} = Astro.props;
+---
+
+<section
+  class="relative pt-36 pb-20 overflow-hidden"
+  style={`background: linear-gradient(135deg, ${bgColor} 0%, #0d5578 100%);`}
+>
+  <!-- Circuit overlay -->
+  <div class="circuit-bg absolute inset-0 opacity-25"></div>
+
+  <!-- Diagonal accent -->
+  <div
+    class="absolute bottom-0 left-0 right-0 h-16"
+    style="background: white; clip-path: polygon(0 100%, 100% 0, 100% 100%);"
+  >
+  </div>
+
+  <!-- Left red bar -->
+  <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
+
+  <!-- Dot grid right side -->
+  <div
+    class="absolute right-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3 opacity-10"
+  >
+    {
+      Array.from({ length: 6 }).map((_, i) => (
+        <div class="flex gap-3">
+          {Array.from({ length: 6 }).map((_, j) => (
+            <div class="w-2 h-2 rounded-full bg-white" />
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Breadcrumbs -->
+    {
+      breadcrumbs.length > 0 && (
+        <nav class="flex items-center gap-2 mb-5" aria-label="Breadcrumb">
+          <a
+            href="/"
+            class="text-white/40 hover:text-white/70 text-xs tracking-widest uppercase transition-colors font-display"
+          >
+            Home
+          </a>
+          {breadcrumbs.map((crumb) => (
+            <>
+              <span class="text-white/25 text-xs">/</span>
+              <a
+                href={crumb.href}
+                class="text-white/40 hover:text-white/70 text-xs tracking-widest uppercase transition-colors font-display"
+              >
+                {crumb.label}
+              </a>
+            </>
+          ))}
+        </nav>
+      )
+    }
+
+    <div class="section-label text-white/60">{label}</div>
+    <h1
+      class="font-display font-bold text-white leading-tight mt-2 mb-4"
+      style="font-size: clamp(2.4rem, 5vw, 4rem);"
+    >
+      {title}
+      {highlight && <span class="text-[#e31e24]"> {highlight}</span>}
+    </h1>
+    {
+      subtitle && (
+        <p class="text-white/60 max-w-2xl text-lg leading-relaxed">
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+</section>

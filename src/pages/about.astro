@@ -1,0 +1,309 @@
+---
+// src/pages/about.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+
+const values = [
+  {
+    title: "Integrity",
+    desc: "We operate with complete transparency — in pricing, process, and communication.",
+  },
+  {
+    title: "Excellence",
+    desc: "We hold ourselves to the highest technical standards in every engagement.",
+  },
+  {
+    title: "Innovation",
+    desc: "We stay ahead of the technology curve to bring you modern, future-ready solutions.",
+  },
+  {
+    title: "Partnership",
+    desc: "We measure our success by your success — not just by contracts closed.",
+  },
+  {
+    title: "Reliability",
+    desc: "99.99% uptime isn't a promise — it's a commitment backed by SLAs and 24/7 NOC.",
+  },
+  {
+    title: "Simplicity",
+    desc: "We translate complex IT into clear, actionable strategies any business can execute.",
+  },
+];
+
+const team = [
+  {
+    name: "Leadership Team",
+    role: "Strategy & Vision",
+    desc: "Experienced IT professionals with 15+ years of combined expertise across telecom, cloud, and enterprise IT.",
+  },
+  {
+    name: "Engineering Team",
+    role: "Implementation & Support",
+    desc: "Certified engineers and network specialists who design, deploy, and maintain your infrastructure.",
+  },
+  {
+    name: "Customer Success",
+    role: "Relationships & Growth",
+    desc: "Dedicated account managers ensuring your IT evolves with your business at every stage.",
+  },
+];
+---
+
+<BaseLayout
+  title="About Us"
+  description="Learn about Foxride Technologies — our mission, vision, values, and the team behind India's trusted IT solutions provider for MSMEs."
+>
+  <PageBanner
+    label="Our Story"
+    title="VALUE"
+    highlight="BEYOND CONNECTIONS"
+    subtitle="We're not just an IT company — we're a growth partner for MSMEs navigating the digital landscape."
+    breadcrumbs={[{ label: "About", href: "/about" }]}
+    bgColor="#061523"
+  />
+
+  <!-- ═══ ABOUT INTRO -->
+  <section class="py-24 bg-white circuit-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="section-label reveal">Who We Are</div>
+          <h2
+            class="font-display font-bold text-[#061523] leading-tight mb-6 reveal"
+            style="font-size: clamp(2rem, 3.5vw, 3rem);"
+          >
+            YOUR ONE STOP SOLUTION<br /><span class="text-[#0d5578]"
+              >FOR IT NEEDS</span
+            >
+          </h2>
+          <p class="text-[#374151] leading-relaxed mb-5 reveal" data-delay="80">
+            At Foxride Technologies, we empower businesses with smart, secure,
+            and scalable IT solutions tailored for growth. Founded with a
+            mission to bridge the digital gap for India's MSMEs, we've grown
+            into a trusted partner for 250+ businesses across industries.
+          </p>
+          <p
+            class="text-[#374151] leading-relaxed mb-5 reveal"
+            data-delay="120"
+          >
+            As an authorized channel partner of TATA Tele Business Services, we
+            bring enterprise-grade connectivity — Internet Leased Lines, SD-WAN,
+            VoIP, and cloud services — to businesses of every size, with the
+            personal service and local expertise that large vendors simply can't
+            provide.
+          </p>
+          <p
+            class="text-[#374151] leading-relaxed mb-8 reveal"
+            data-delay="160"
+          >
+            With 5+ years in the industry, 1100+ on-site and remote resolutions,
+            and a 99.99% uptime track record across critical infrastructure,
+            we've earned the trust of clients ranging from AMITY University to
+            PVR Cinemas to Aditya Birla Group.
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4 reveal" data-delay="100">
+          {
+            [
+              { num: "5+", label: "Years of Experience", color: "#0d5578" },
+              {
+                num: "250+",
+                label: "Happy Clients Across India",
+                color: "#e31e24",
+              },
+              { num: "99.99%", label: "Uptime SLA", color: "#0d5578" },
+              { num: "1100+", label: "Issues Resolved", color: "#e31e24" },
+              { num: "100+", label: "ILL Deployments", color: "#0d5578" },
+              { num: "40+", label: "Cloud Migrations", color: "#e31e24" },
+              { num: "24/7", label: "Dedicated Support", color: "#0d5578" },
+              { num: "8+", label: "Industries Served", color: "#e31e24" },
+            ].map((stat, i) => (
+              <div
+                class="p-5 border border-[#e2eaf2] hover:shadow-md transition-shadow"
+                style={`border-top: 3px solid ${stat.color};`}
+              >
+                <div class="font-display font-bold text-[#061523] text-3xl leading-none mb-1">
+                  {stat.num}
+                </div>
+                <div class="text-[#6b7280] text-xs tracking-wide leading-relaxed">
+                  {stat.label}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MISSION & VISION -->
+  <section class="py-20 bg-[#061523] relative overflow-hidden">
+    <div class="circuit-bg absolute inset-0 opacity-20"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div
+          class="bg-[#0d1e35] border border-white/8 p-10 relative overflow-hidden reveal"
+        >
+          <div class="absolute top-0 left-0 w-1 h-full bg-[#e31e24]"></div>
+          <div
+            class="absolute bottom-4 right-6 font-display text-9xl font-bold text-white/3 leading-none select-none"
+          >
+            M
+          </div>
+          <div class="section-label mb-4">Our Mission</div>
+          <h3
+            class="font-display font-bold text-white text-2xl tracking-wide mb-4"
+          >
+            REAL SERVICE. REAL LEGACY.
+          </h3>
+          <p class="text-white/60 leading-relaxed text-lg">
+            To provide our customers with real service — one that cannot be
+            measured with money and is a legacy at its best. Every deployment,
+            every support call, every client relationship is handled with the
+            same level of care and commitment.
+          </p>
+        </div>
+        <div
+          class="bg-[#0d5578] border border-white/8 p-10 relative overflow-hidden reveal"
+          data-delay="150"
+        >
+          <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
+          <div
+            class="absolute bottom-4 right-6 font-display text-9xl font-bold text-white/5 leading-none select-none"
+          >
+            V
+          </div>
+          <div class="section-label text-white/60 mb-4">Our Vision</div>
+          <h3
+            class="font-display font-bold text-white text-2xl tracking-wide mb-4"
+          >
+            WORLDWIDE. WORLD-CLASS.
+          </h3>
+          <p class="text-white/70 leading-relaxed text-lg">
+            To have a widespread presence across the world while delivering the
+            best quality service in the IT sector. We envision Foxride as the
+            benchmark for what an IT solutions provider should be — trusted,
+            proactive, and genuinely invested in client success.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VALUES -->
+  <section class="py-24 bg-[#f0f4f8]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <div class="section-label justify-center reveal">What Guides Us</div>
+        <h2
+          class="font-display font-bold text-[#061523] leading-tight reveal"
+          style="font-size: clamp(2rem, 3.5vw, 3rem);"
+        >
+          OUR <span class="text-[#0d5578]">CORE VALUES</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          values.map((v, i) => (
+            <div
+              class="bg-white p-8 border border-[#e2eaf2] hover:border-[#0d5578] hover:shadow-lg transition-all duration-300 group reveal"
+              data-delay={i * 80}
+            >
+              <div class="w-10 h-10 bg-[#0d5578]/10 border border-[#0d5578]/20 flex items-center justify-center mb-5 group-hover:bg-[#0d5578] transition-colors">
+                <div class="font-display font-bold text-[#0d5578] group-hover:text-white transition-colors text-sm">
+                  {i + 1}
+                </div>
+              </div>
+              <h4 class="font-display font-bold text-[#061523] tracking-widest uppercase text-sm mb-3 group-hover:text-[#0d5578] transition-colors">
+                {v.title}
+              </h4>
+              <p class="text-[#6b7280] text-sm leading-relaxed">{v.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEAM SECTIONS -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <div class="section-label justify-center reveal">
+          The People Behind Foxride
+        </div>
+        <h2
+          class="font-display font-bold text-[#061523] leading-tight reveal"
+          style="font-size: clamp(2rem, 3.5vw, 3rem);"
+        >
+          OUR <span class="text-[#0d5578]">TEAM</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          team.map((t, i) => (
+            <div
+              class="border border-[#e2eaf2] p-8 hover:shadow-lg transition-all relative overflow-hidden group reveal"
+              data-delay={i * 100}
+            >
+              <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0d5578] to-[#e31e24] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
+              <div class="w-12 h-12 bg-[#0d5578]/10 border border-[#0d5578]/20 flex items-center justify-center mb-5">
+                <svg
+                  class="w-5 h-5 text-[#0d5578]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <div class="font-display text-xs tracking-widest uppercase text-[#e31e24] mb-1">
+                {t.role}
+              </div>
+              <h4 class="font-display font-bold text-[#061523] text-lg tracking-wide mb-3">
+                {t.name.toUpperCase()}
+              </h4>
+              <p class="text-[#6b7280] text-sm leading-relaxed">{t.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TATA PARTNERSHIP -->
+  <section class="py-16 bg-[#0d5578]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+      <div
+        class="font-display font-bold text-white/50 text-xs tracking-widest uppercase mb-4 reveal"
+      >
+        Official Partnership
+      </div>
+      <h3
+        class="font-display font-bold text-white text-3xl tracking-wide mb-3 reveal"
+      >
+        AUTHORIZED CHANNEL PARTNER
+      </h3>
+      <p class="text-white/60 mb-8 max-w-xl mx-auto reveal" data-delay="100">
+        Foxride Technologies is an authorized channel partner of TATA Tele
+        Business Services, bringing enterprise-grade connectivity and cloud
+        services to businesses of all sizes.
+      </p>
+      <a
+        href="/contact"
+        class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#b81820] transition-colors inline-block reveal"
+        data-delay="200"
+      >
+        Partner with Us
+      </a>
+    </div>
+  </section>
+</BaseLayout>
