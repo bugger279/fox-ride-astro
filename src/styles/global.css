@@ -32,6 +32,14 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
+
+  button, 
+  a, 
+  [role="button"],
+  .faq-toggle,
+  .btn-clip {
+    cursor: pointer;
+  }
 }
 
 /* Circuit pattern utility */
