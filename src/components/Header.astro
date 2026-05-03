@@ -77,19 +77,19 @@ function isActive(href: string): boolean {
 
                 <!-- Dropdown -->
                 <div
-                  class="dropdown absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+                  class="dropdown absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
                 >
                   <div
-                    class="bg-[#061523] border border-white/10 shadow-2xl min-w-[220px] py-2"
+                    class="bg-[#061523] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] min-w-[240px] py-3 backdrop-blur-md"
                   >
                     {
                       link.children.map((child) => (
                         <a
                           href={child.href}
-                          class={`flex items-center gap-3 px-5 py-2.5 text-sm font-body transition-colors hover:bg-[#0d5578]/30 ${pathname === child.href ? "text-[#e31e24]" : "text-white/70 hover:text-white"}`}
+                          class={`flex items-center gap-4 px-6 py-3 text-sm font-body transition-all hover:bg-[#e31e24] group/item ${pathname === child.href ? "text-white bg-[#e31e24]/20" : "text-white/70 hover:text-white"}`}
                         >
-                          <span class="w-1.5 h-1.5 rounded-full bg-[#e31e24] flex-shrink-0" />
-                          {child.label}
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#e31e24] group-hover/item:bg-white transition-colors flex-shrink-0" />
+                          <span class="tracking-wide">{child.label}</span>
                         </a>
                       ))
                     }
