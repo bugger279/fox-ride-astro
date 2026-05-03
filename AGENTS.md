@@ -74,7 +74,12 @@ Defined in `src/styles/global.css`: `.reveal` (scroll animation), `.btn-clip` (c
 
 ### Contact form
 
-`/contact` has a placeholder form submission handler. `@emailjs/browser` is installed but not yet wired up. Look for `// TODO: Replace with actual EmailJS integration` in `contact.astro`.
+`/contact` uses `@emailjs/browser` for form submissions. It is fully wired up using environment variables:
+- `PUBLIC_EMAILJS_PUBLIC_KEY`
+- `PUBLIC_EMAILJS_SERVICE_ID`
+- `PUBLIC_EMAILJS_TEMPLATE_ID`
+
+Success/error states are handled and displayed to the user via `#form-status`.
 
 ## Conventions
 
