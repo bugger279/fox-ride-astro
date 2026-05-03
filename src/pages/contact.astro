@@ -257,6 +257,8 @@ const iconPaths: Record<string, string> = {
 </BaseLayout>
 
 <script>
+  import emailjs from '@emailjs/browser';
+  
   // Google Map Initialization
   (window as any).onApiLoad = () => {
     const mumbai = { lat: 19.1601, lng: 72.8595 }; // Garnet Palladium Coordinates
@@ -328,10 +330,13 @@ const iconPaths: Record<string, string> = {
     });
   });
 
+  // Initialize EmailJS
+  emailjs.init(import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY);
+
   // Form submission
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const status = document.getElementById("form-status") as HTMLElement;
-  
+   
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     
@@ -339,9 +344,18 @@ const iconPaths: Record<string, string> = {
     status.textContent = "Sending your message...";
     status.classList.add("text-[#0d5578]");
     
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    status.textContent = "Thank you! We'll get back to you within 4 hours.";
-    form.reset();
+    try {
+      await emailjs.sendForm(
+        import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
+        import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
+        form
+      );
+      
+      status.textContent = "Thank you! We'll get back to you within 4 hours.";
+      form.reset();
+    } catch (error) {
+      status.textContent = "Failed to send message. Please try again or contact us directly.";
+      status.classList.add("text-[#e31e24]");
+    }
   });
 </script>
