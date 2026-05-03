@@ -31,31 +31,31 @@ function serviceIconSVG(icon: string): string {
   />
 
   <!-- Services Grid -->
-  <section class="py-24 bg-white circuit-bg">
+  <section class="py-16 md:py-24 bg-white circuit-bg">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {services.map((service, i) => (
           <a
             href={`/services/${service.slug}`}
-            class="group border border-[#e2eaf2] p-8 hover:border-[#0d5578] hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-white reveal"
+            class="group border border-[#e2eaf2] p-8 shadow-card hover:shadow-card-hover hover:border-[#0d5578]/50 transition-all duration-300 relative overflow-hidden bg-white reveal flex flex-col h-full"
             data-delay={i * 80}
           >
             <div class="absolute top-0 left-0 w-1 h-full bg-[#e31e24] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
             
-            <div class="flex items-start gap-6">
+            <div class="flex flex-col sm:flex-row items-start gap-6 h-full">
               <div class="w-16 h-16 bg-[#0d5578]/8 border border-[#0d5578]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0d5578] transition-colors duration-300">
                 <svg class="w-7 h-7 text-[#0d5578] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" set:html={serviceIconSVG(service.icon)} />
               </div>
-              <div class="flex-1">
+              <div class="flex-1 flex flex-col h-full">
                 <div class="font-display text-xs tracking-widest uppercase text-[#e31e24] mb-1">{service.tagline}</div>
                 <h3 class="font-display font-bold text-[#061523] text-xl tracking-wide mb-3 group-hover:text-[#0d5578] transition-colors">{service.title.toUpperCase()}</h3>
                 <p class="text-[#6b7280] text-sm leading-relaxed mb-4">{service.description}</p>
-                <div class="flex flex-wrap gap-2 mb-4">
+                <div class="flex flex-wrap gap-2 mb-6">
                   {service.tags.map((tag) => (
                     <span class="text-xs text-[#0d5578] bg-[#0d5578]/8 px-2.5 py-1 border border-[#0d5578]/20">{tag}</span>
                   ))}
                 </div>
-                <div class="flex items-center gap-2 text-[#e31e24] font-display font-semibold text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
+                <div class="mt-auto flex items-center gap-2 text-[#e31e24] font-display font-semibold text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
                   View Details <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
               </div>

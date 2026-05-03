@@ -58,11 +58,11 @@ function serviceIconSVG(icon: string): string {
       ))}
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-32">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
           <div class="section-label text-white/60 reveal">Authorized TATA Tele Business Partner</div>
-          <h1 class="font-display font-bold text-white leading-tight mb-6 reveal" style="font-size: clamp(2.8rem, 5.5vw, 5rem);" data-delay="100">
+          <h1 class="font-display font-bold text-white leading-tight mb-6 reveal" style="font-size: clamp(2.5rem, 6vw, 5rem);" data-delay="100">
             VALUE<br /><span class="text-[#e31e24]">BEYOND</span><br />CONNECTIONS
           </h1>
           <p class="text-white/60 text-lg leading-relaxed mb-10 reveal" data-delay="200">
@@ -79,11 +79,11 @@ function serviceIconSVG(icon: string): string {
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 gap-4 reveal" data-delay="200">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal" data-delay="200">
           {stats.map((stat) => (
             <div class="bg-[#0d1e35] border border-white/8 p-6 relative overflow-hidden group hover:border-[#0d5578]/40 transition-colors" style={`border-top: 3px solid ${stat.color};`}>
               <div class="absolute top-0 left-0 w-1 h-full" style={`background: ${stat.color};`}></div>
-              <div class="font-display font-bold text-white text-4xl leading-none mb-1">{stat.num}</div>
+              <div class="font-display font-bold text-white text-3xl md:text-4xl leading-none mb-1">{stat.num}</div>
               <div class="text-white/40 text-xs tracking-wide leading-relaxed">{stat.label}</div>
             </div>
           ))}
@@ -93,7 +93,7 @@ function serviceIconSVG(icon: string): string {
   </section>
 
   <!-- ═══ SERVICES OVERVIEW -->
-  <section class="py-24 bg-white circuit-bg">
+  <section class="py-16 md:py-24 bg-white circuit-bg">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="text-center mb-16">
         <div class="section-label justify-center reveal">What We Offer</div>
@@ -105,9 +105,9 @@ function serviceIconSVG(icon: string): string {
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {services.map((service, i) => (
-          <a href={`/services/${service.slug}`} class="group border border-[#e2eaf2] p-8 hover:border-[#0d5578] hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-white reveal" data-delay={i * 80}>
+          <a href={`/services/${service.slug}`} class="group border border-[#e2eaf2] p-8 shadow-card hover:shadow-card-hover hover:border-[#0d5578]/50 transition-all duration-300 relative overflow-hidden bg-white reveal flex flex-col h-full" data-delay={i * 80}>
             <div class="absolute top-0 left-0 w-1 h-full bg-[#e31e24] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
             
             <div class="w-14 h-14 bg-[#0d5578]/8 border border-[#0d5578]/20 flex items-center justify-center mb-5 group-hover:bg-[#0d5578] transition-colors duration-300">
@@ -115,8 +115,9 @@ function serviceIconSVG(icon: string): string {
             </div>
             <div class="font-display text-xs tracking-widest uppercase text-[#e31e24] mb-1">{service.tagline}</div>
             <h3 class="font-display font-bold text-[#061523] text-lg tracking-wide mb-3 group-hover:text-[#0d5578] transition-colors">{service.title.toUpperCase()}</h3>
-            <p class="text-[#6b7280] text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
-            <div class="flex items-center gap-2 text-[#e31e24] font-display font-semibold text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
+            <p class="text-[#6b7280] text-sm leading-relaxed mb-6 line-clamp-3">{service.description}</p>
+            
+            <div class="mt-auto flex items-center gap-2 text-[#e31e24] font-display font-semibold text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
               Learn More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </div>
           </a>
@@ -132,11 +133,11 @@ function serviceIconSVG(icon: string): string {
   </section>
 
   <!-- ═══ WHY CHOOSE US -->
-  <section class="py-20 bg-[#061523] relative overflow-hidden">
+  <section class="py-16 md:py-20 bg-[#061523] relative overflow-hidden">
     <div class="circuit-bg absolute inset-0 opacity-20"></div>
     <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
     <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
           <div class="section-label reveal">Why Foxride</div>
           <h2 class="font-display font-bold text-white leading-tight mb-6 reveal" style="font-size: clamp(2rem, 3.5vw, 3rem);">
@@ -152,21 +153,21 @@ function serviceIconSVG(icon: string): string {
               { title: "Transparent Pricing", desc: "No hidden costs — predictable monthly IT spend" },
               { title: "PAN India Coverage", desc: "Nationwide service delivery with local expertise" },
             ].map((item) => (
-              <div class="bg-[#0d1e35] border border-white/8 p-5 group hover:border-[#0d5578]/40 transition-colors">
+              <div class="bg-[#0d1e35] border border-white/8 p-5 group hover:border-[#0d5578]/40 transition-colors flex flex-col h-full">
                 <div class="w-8 h-8 bg-[#e31e24]/20 border border-[#e31e24]/40 flex items-center justify-center mb-3 group-hover:bg-[#e31e24] transition-colors">
                   <svg class="w-4 h-4 text-[#e31e24] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div class="font-display font-bold text-white text-sm tracking-wide mb-1">{item.title}</div>
-                <div class="text-white/40 text-xs leading-relaxed">{item.desc}</div>
+                <div class="text-white/40 text-xs leading-relaxed mt-auto">{item.desc}</div>
               </div>
             ))}
           </div>
         </div>
 
         <!-- TATA Partnership -->
-        <div class="bg-[#0d5578] p-10 relative overflow-hidden reveal" data-delay="200">
+        <div class="bg-[#0d5578] p-8 md:p-10 relative overflow-hidden reveal" data-delay="200">
           <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
           <div class="absolute bottom-4 right-6 font-display text-9xl font-bold text-white/5 leading-none select-none">T</div>
           <div class="section-label text-white/60 mb-4">Official Partnership</div>
@@ -183,7 +184,7 @@ function serviceIconSVG(icon: string): string {
   </section>
 
   <!-- ═══ CLIENTS -->
-  <section id="clients" class="py-24 bg-[#f0f4f8]">
+  <section id="clients" class="py-16 md:py-24 bg-[#f0f4f8]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="text-center mb-16">
         <div class="section-label justify-center reveal">Trusted By</div>
@@ -195,9 +196,9 @@ function serviceIconSVG(icon: string): string {
         </p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 reveal" data-delay="150">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 reveal" data-delay="150">
         {clients.map((client) => (
-          <div class="bg-white border border-[#e2eaf2] p-6 flex items-center justify-center text-center hover:border-[#0d5578] hover:shadow-md transition-all group">
+          <div class="bg-white border border-[#e2eaf2] p-4 md:p-6 flex items-center justify-center text-center hover:border-[#0d5578] hover:shadow-md transition-all group">
             <div class="font-display font-bold text-[#6b7280] text-sm tracking-wide group-hover:text-[#0d5578] transition-colors">
               {client}
             </div>
@@ -208,11 +209,11 @@ function serviceIconSVG(icon: string): string {
   </section>
 
   <!-- ═══ CTA -->
-  <section class="py-20 bg-[#0d5578] relative overflow-hidden">
+  <section class="py-16 md:py-20 bg-[#0d5578] relative overflow-hidden">
     <div class="circuit-bg absolute inset-0 opacity-20"></div>
     <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-[#e31e24]"></div>
     <div class="relative max-w-4xl mx-auto px-6 lg:px-12 text-center">
-      <h2 class="font-display font-bold text-white text-4xl tracking-wide mb-4 reveal">READY TO TRANSFORM YOUR IT?</h2>
+      <h2 class="font-display font-bold text-white text-3xl md:text-4xl tracking-wide mb-4 reveal">READY TO TRANSFORM YOUR IT?</h2>
       <p class="text-white/60 text-lg mb-10 reveal" data-delay="100">
         Talk to our experts today. We'll assess your needs and build a tailored solution that fits your budget and scale.
       </p>
