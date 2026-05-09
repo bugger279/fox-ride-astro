@@ -13,12 +13,12 @@ interface Props {
 
 const {
   title,
-  description = "Foxride Technologies – Smart, secure, and scalable IT solutions for MSMEs across India. Cloud, Security, Managed Services, Telecom, and Internet Leased Lines.",
+  description = "ClearTech Services Pvt Ltd – Your Shield in the Digital World. Secure, Scalable, and Reliable IT Solutions for Modern Businesses.",
   ogImage = "/og-image.jpg",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = `${title} | Foxride Technologies`;
+const fullTitle = `${title} | ClearTech Services Pvt Ltd`;
 ---
 
 <!doctype html>
@@ -39,7 +39,7 @@ const fullTitle = `${title} | Foxride Technologies`;
           url: canonicalURL.toString(),
         },
         optional: {
-          siteName: "Foxride Technologies",
+          siteName: "ClearTech Services Pvt Ltd",
           description: description,
         }
       }}
@@ -50,7 +50,13 @@ const fullTitle = `${title} | Foxride Technologies`;
         image: new URL(ogImage, Astro.site).toString(),
       }}
       extend={{
-        link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+        link: [
+          { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+          { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
+          { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+          { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+          { rel: "manifest", href: "/site.webmanifest" },
+        ],
       }}
     />
 
