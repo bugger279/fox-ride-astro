@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update the domain below to your live domain
+Sitemap: https://www.cleartech.net.in/sitemap-index.xml
