@@ -66,6 +66,10 @@ export const services: Service[] = [
         title: "Security Services Suite",
         desc: "Comprehensive Firewall, VPN, Anti-Virus, and RSA authentication services under one roof.",
       },
+      {
+        title: "Endpoint Security Services",
+        desc: "Protect your business endpoints with advanced, next-generation security solutions designed to detect, prevent, and respond to evolving cyber threats. We provide end-to-end Endpoint Security services, from solution assessment and Proof of Concept (POC) to deployment, configuration, and ongoing support. We partner with leading global security technology providers, including CrowdStrike, Seqrite, and other top-tier cybersecurity platforms, to deliver solutions aligned with your business requirements. Our experts help organizations strengthen endpoint protection, improve threat visibility, and enhance their overall security posture.",
+      },
     ],
     benefits: [
       "Reduce breach risk by up to 90% with layered security",

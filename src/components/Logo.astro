@@ -1,0 +1,52 @@
+---
+// theme: "on-dark"  → white text (for navy backgrounds)
+//        "on-light" → navy text (for white/light backgrounds)
+//        "auto"     → follows the visitor's OS light/dark setting
+// variant: "horizontal" (navbar/footer) | "full" (stacked, with tagline) | "mark" (CS icon)
+interface Props {
+  theme?: "on-dark" | "on-light" | "auto";
+  variant?: "horizontal" | "full" | "mark";
+  class?: string;
+  eager?: boolean;
+}
+
+const {
+  theme = "auto",
+  variant = "horizontal",
+  class: className = "",
+  eager = false,
+} = Astro.props;
+
+const dims = { horizontal: [403, 120], full: [1600, 560], mark: [512, 512] } as const;
+const [width, height] = dims[variant];
+const src = (t: string) => `/logo/logo-${variant}-${t}.svg`;
+const alt = "ClearTech Services Pvt Ltd";
+const loading = eager ? "eager" : "lazy";
+---
+
+{
+  theme === "auto" ? (
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset={src("on-dark")} />
+      <img
+        src={src("on-light")}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        decoding="async"
+        class={`w-auto ${className}`}
+      />
+    </picture>
+  ) : (
+    <img
+      src={src(theme)}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding="async"
+      class={`w-auto ${className}`}
+    />
+  )
+}

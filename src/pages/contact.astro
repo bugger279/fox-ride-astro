@@ -8,19 +8,31 @@ const contactMethods = [
     label: "Call Us",
     details: ["+91 7208273097"],
     hours: "Mon–Sat, 9 AM – 7 PM IST",
+    href: "tel:+917208273097",
+    cta: "Call now",
   },
   {
     icon: "email",
     label: "Email Us",
     details: ["info@cleartech.net.in"],
     hours: "24/7 — we respond within 4 hours",
+    href: "mailto:info@cleartech.net.in",
+    cta: "Send an email",
   },
   {
     icon: "location",
     label: "Visit Us",
     details: ["E 31 BHOLENATH CHL", "GOKUL NAGAR AKURLI ROAD", "Kandivali East, Mumbai – 400101"],
     hours: "Mon–Fri, 10 AM – 6 PM IST",
+    href: "https://maps.google.com/?q=E+31+BHOLENATH+CHL+GOKUL+NAGAR+AKURLI+ROAD+Kandivali+East+Mumbai+400101",
+    cta: "Get directions",
   },
+];
+
+const steps = [
+  { n: "01", title: "Reach Out", text: "Call or email us with a few lines about your IT needs." },
+  { n: "02", title: "Free Assessment", text: "We review your current setup and business goals." },
+  { n: "03", title: "Tailored Proposal", text: "You get a clear solution with timelines and costs." },
 ];
 
 const faqs = [
@@ -47,6 +59,8 @@ const iconPaths: Record<string, string> = {
   email: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
   location: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
 };
+
+const mapsUrl = contactMethods[2].href;
 ---
 
 <BaseLayout
@@ -62,12 +76,26 @@ const iconPaths: Record<string, string> = {
     bgColor="#061523"
   />
 
-  <!-- ═══ CONTACT METHODS -->
+  <!-- ═══ CONTACT METHODS (clickable cards) -->
   <section class="py-24 bg-white circuit-bg">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-14">
+        <div class="section-label justify-center reveal">Reach Us Directly</div>
+        <h2 class="font-display font-bold text-[#061523] leading-tight reveal text-[clamp(2rem,3.5vw,3rem)]">
+          LET'S <span class="text-[#0d5578]">TALK</span>
+        </h2>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {contactMethods.map((method, i) => (
-          <div class="bg-[#f0f4f8] p-8 border border-[#e2eaf2] hover:border-[#0d5578] transition-all group reveal" data-delay={i * 100}>
+          <a
+            href={method.href}
+            target={method.icon === "location" ? "_blank" : undefined}
+            rel={method.icon === "location" ? "noopener" : undefined}
+            class="bg-[#f0f4f8] p-8 border border-[#e2eaf2] hover:border-[#0d5578] hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group reveal flex flex-col relative overflow-hidden"
+            data-delay={i * 100}
+          >
+            <div class="absolute top-0 left-0 h-1 w-0 bg-[#e31e24] group-hover:w-full transition-all duration-500"></div>
             <div class="w-14 h-14 bg-[#0d5578]/10 border border-[#0d5578]/20 flex items-center justify-center mb-6 group-hover:bg-[#0d5578] transition-colors">
               <svg class="w-6 h-6 text-[#0d5578] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[method.icon]} />
@@ -78,138 +106,136 @@ const iconPaths: Record<string, string> = {
               <p class="text-[#374151] text-sm leading-relaxed mb-1">{detail}</p>
             ))}
             <p class="text-[#6b7280] text-xs mt-4">{method.hours}</p>
+            <span class="mt-6 pt-4 border-t border-[#e2eaf2] text-[#e31e24] text-xs font-display font-bold tracking-widest uppercase inline-flex items-center gap-2">
+              {method.cta}
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OFFICE + FULL-HEIGHT MAP -->
+  <section class="py-24 bg-[#f0f4f8]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 shadow-2xl">
+
+        <!-- Office info -->
+        <div class="lg:col-span-2 bg-[#061523] p-10 lg:p-12 relative overflow-hidden reveal">
+          <div class="circuit-bg absolute inset-0 opacity-20"></div>
+          <div class="absolute top-0 left-0 w-1 h-full bg-[#e31e24]"></div>
+          <div class="relative">
+            <div class="section-label text-white/60 mb-2">Our Office</div>
+            <h3 class="font-display font-bold text-white text-2xl tracking-wide mb-8">MUMBAI HEADQUARTERS</h3>
+
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.location} />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/70 text-sm leading-relaxed">E 31 BHOLENATH CHL, GOKUL NAGAR</p>
+                  <p class="text-white/70 text-sm leading-relaxed">AKURLI ROAD, Kandivali East</p>
+                  <p class="text-white/70 text-sm leading-relaxed">Mumbai – 400101, Maharashtra</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/50 text-xs tracking-widest uppercase mb-1">Business Hours</p>
+                  <p class="text-white/70 text-sm">Mon–Fri: 10 AM – 6 PM IST</p>
+                  <p class="text-white/70 text-sm">Sat: 10 AM – 2 PM IST</p>
+                  <p class="text-white/40 text-xs mt-1">Support: 24/7</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.phone} />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/50 text-xs tracking-widest uppercase mb-1">Phone</p>
+                  <a href="tel:+917208273097" class="text-white/70 text-sm hover:text-white transition-colors block">+91 7208273097</a>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.email} />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/50 text-xs tracking-widest uppercase mb-1">Email</p>
+                  <a href="mailto:info@cleartech.net.in" class="text-white/70 text-sm hover:text-white transition-colors block">info@cleartech.net.in</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-3">
+              <a href="tel:+917208273097" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-6 py-3 text-xs hover:bg-[#b81820] transition-colors text-center">
+                Call Now
+              </a>
+              <a href="mailto:info@cleartech.net.in" class="btn-clip border border-white/30 text-white font-display font-bold tracking-widest uppercase px-6 py-3 text-xs hover:bg-white hover:text-[#061523] transition-colors text-center">
+                Email Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="lg:col-span-3 relative min-h-[420px] lg:min-h-[560px] bg-[#08304b] reveal" data-delay="150">
+          <div id="google-map" class="absolute inset-0 w-full h-full"></div>
+          <div class="absolute bottom-5 left-5 z-10">
+            <a href={mapsUrl} target="_blank" rel="noopener" class="bg-[#e31e24] text-white text-[10px] font-display font-bold tracking-widest uppercase px-4 py-2 hover:bg-[#b81820] transition-colors shadow-xl inline-flex items-center gap-2">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.location} />
+              </svg>
+              Open in Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT HAPPENS NEXT -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-14">
+        <div class="section-label justify-center reveal">How It Works</div>
+        <h2 class="font-display font-bold text-[#061523] leading-tight reveal text-[clamp(2rem,3.5vw,3rem)]">
+          WHAT HAPPENS <span class="text-[#0d5578]">NEXT</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        {steps.map((s, i) => (
+          <div class="text-center px-4 reveal" data-delay={i * 100}>
+            <div class="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-[#0d5578]/30 flex items-center justify-center font-display font-bold text-xl text-[#e31e24] hover:bg-[#0d5578] hover:text-white hover:border-[#0d5578] transition-all">
+              {s.n}
+            </div>
+            <h3 class="font-display font-bold text-[#061523] tracking-wide mb-2">{s.title.toUpperCase()}</h3>
+            <p class="text-[#6b7280] text-sm leading-relaxed max-w-xs mx-auto">{s.text}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ═══ CONTACT FORM + MAP -->
-  <section class="py-24 bg-[#f0f4f8]">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Form -->
-        <div class="bg-white p-10 border border-[#e2eaf2] reveal">
-          <div class="section-label mb-2">Send Us a Message</div>
-          <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-6">REQUEST A FREE CONSULTATION</h2>
-          
-          <form id="contact-form" class="space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label for="name" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Full Name</label>
-                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="John Doe" />
-              </div>
-              <div>
-                <label for="company" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Company</label>
-                <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="Your Company" />
-              </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label for="email" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Email</label>
-                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="john@company.com" />
-              </div>
-              <div>
-                <label for="phone" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Phone</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="+91 XXXXX XXXXX" />
-              </div>
-            </div>
-            <div>
-              <label for="service" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Service Interested In</label>
-              <select id="service" name="service" class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors bg-white">
-                <option value="">Select a service</option>
-                <option value="it-security">IT & Security Solutions</option>
-                <option value="managed-services">IT Managed Services</option>
-                <option value="cloud">Cloud Services & Data Centres</option>
-                <option value="telecom">Telecommunication Services</option>
-                <option value="leased-lines">Internet Leased Lines</option>
-                <option value="hosting">Hosting Services</option>
-                <option value="other">Other / Multiple</option>
-              </select>
-            </div>
-            <div>
-              <label for="message" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Message</label>
-              <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors resize-none" placeholder="Tell us about your requirements..."></textarea>
-            </div>
-            <button type="submit" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#b81820] transition-colors w-full">
-              Send Message
-            </button>
-          </form>
-
-          <div id="form-status" class="mt-4 text-sm hidden"></div>
-        </div>
-
-        <!-- Map / Office Info -->
-        <div class="reveal" data-delay="150">
-          <div class="bg-[#061523] p-10 h-full relative overflow-hidden">
-            <div class="circuit-bg absolute inset-0 opacity-20"></div>
-            <div class="absolute top-0 left-0 w-1 h-full bg-[#e31e24]"></div>
-            <div class="relative">
-              <div class="section-label text-white/60 mb-2">Our Office</div>
-              <h3 class="font-display font-bold text-white text-2xl tracking-wide mb-6">MUMBAI HEADQUARTERS</h3>
-              
-              <div class="space-y-6">
-                <div class="flex gap-4">
-                  <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
-                    <svg class="w-4 h-4 text-[#0d5578]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.location} />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-white/70 text-sm leading-relaxed">E 31 BHOLENATH CHL, GOKUL NAGAR</p>
-                    <p class="text-white/70 text-sm leading-relaxed">AKURLI ROAD, Kandivali East</p>
-                    <p class="text-white/70 text-sm leading-relaxed">Mumbai – 400101, Maharashtra</p>
-                  </div>
-                </div>
-                
-                <div class="flex gap-4">
-                  <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
-                    <svg class="w-4 h-4 text-[#0d5578]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-white/50 text-xs tracking-widest uppercase mb-1">Business Hours</p>
-                    <p class="text-white/70 text-sm">Mon–Fri: 10 AM – 6 PM IST</p>
-                    <p class="text-white/70 text-sm">Sat: 10 AM – 2 PM IST</p>
-                    <p class="text-white/40 text-xs mt-1">Support: 24/7</p>
-                  </div>
-                </div>
-
-                <div class="flex gap-4">
-                  <div class="w-10 h-10 bg-[#0d5578]/30 border border-[#0d5578]/40 flex items-center justify-center flex-shrink-0">
-                    <svg class="w-4 h-4 text-[#0d5578]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.phone} />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-white/50 text-xs tracking-widest uppercase mb-1">Phone</p>
-                    <a href="tel:+917208273097" class="text-white/70 text-sm hover:text-white transition-colors block">+91 7208273097</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Map placeholder -->
-              <div class="mt-8 border border-white/8 h-64 relative overflow-hidden group">
-                <div id="google-map" class="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.1]"></div>
-                <div class="absolute bottom-4 left-4 z-10">
-                  <a href="https://maps.google.com/?q=E+31+BHOLENATH+CHL+GOKUL+NAGAR+AKURLI+ROAD+Kandivali+East+Mumbai+400101" target="_blank" rel="noopener" class="bg-[#e31e24] text-white text-[10px] font-display font-bold tracking-widest uppercase px-4 py-2 hover:bg-[#b81820] transition-colors shadow-xl inline-flex items-center gap-2">
-                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths.location} />
-                    </svg>
-                    Open in Maps
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══ FAQ -->
-  <section class="py-24 bg-white">
+  <section class="py-24 bg-[#f0f4f8]">
     <div class="max-w-3xl mx-auto px-6 lg:px-12">
       <div class="text-center mb-16">
         <div class="section-label justify-center reveal">Common Questions</div>
@@ -220,7 +246,7 @@ const iconPaths: Record<string, string> = {
 
       <div class="space-y-4">
         {faqs.map((faq, i) => (
-          <div class="faq-item border border-[#e2eaf2] transition-all duration-300 reveal overflow-hidden" data-delay={i * 80}>
+          <div class="faq-item bg-white border border-[#e2eaf2] transition-all duration-300 reveal overflow-hidden" data-delay={i * 80}>
             <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-[#f0f4f8] focus:outline-none transition-all group">
               <span class="font-display font-bold text-[#061523] text-sm md:text-base tracking-wide pr-4 group-hover:text-[#0d5578] transition-colors">{faq.q}</span>
               <div class="faq-icon-wrap w-8 h-8 rounded-full border border-[#e2eaf2] flex items-center justify-center group-hover:border-[#0d5578] group-hover:bg-[#0d5578]/5 transition-all">
@@ -246,21 +272,84 @@ const iconPaths: Record<string, string> = {
     <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
       <h2 class="font-display font-bold text-white text-3xl tracking-wide mb-4 reveal">STILL HAVE QUESTIONS?</h2>
       <p class="text-white/60 mb-8 reveal" data-delay="100">Our team is ready to help you find the right IT solution for your business.</p>
-      <a href="tel:+917208273097" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#b81820] transition-colors inline-block reveal" data-delay="200">
-        Call Us Now: +91 72082 73097
-      </a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center reveal" data-delay="200">
+        <a href="tel:+917208273097" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#b81820] transition-colors inline-block">
+          Call Us Now: +91 72082 73097
+        </a>
+        <a href="mailto:info@cleartech.net.in" class="btn-clip border border-white/40 text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-white hover:text-[#0d5578] transition-colors inline-block">
+          Email Us
+        </a>
+      </div>
     </div>
   </section>
+
+  {/*
+  ═══════════════════════════════════════════════════════════
+  CONTACT FORM — COMMENTED OUT
+  To restore: paste this block back inside a section (e.g. beside the
+  office panel), and un-comment the EmailJS code in the <script> below.
+  ═══════════════════════════════════════════════════════════
+
+  <div class="bg-white p-10 border border-[#e2eaf2] reveal">
+    <div class="section-label mb-2">Send Us a Message</div>
+    <h2 class="font-display font-bold text-[#061523] text-2xl tracking-wide mb-6">REQUEST A FREE CONSULTATION</h2>
+
+    <form id="contact-form" class="space-y-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="name" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Full Name</label>
+          <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="John Doe" />
+        </div>
+        <div>
+          <label for="company" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Company</label>
+          <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="Your Company" />
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="email" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Email</label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="john@company.com" />
+        </div>
+        <div>
+          <label for="phone" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Phone</label>
+          <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors" placeholder="+91 XXXXX XXXXX" />
+        </div>
+      </div>
+      <div>
+        <label for="service" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Service Interested In</label>
+        <select id="service" name="service" class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors bg-white">
+          <option value="">Select a service</option>
+          <option value="it-security">IT & Security Solutions</option>
+          <option value="managed-services">IT Managed Services</option>
+          <option value="cloud">Cloud Services & Data Centres</option>
+          <option value="telecom">Telecommunication Services</option>
+          <option value="leased-lines">Internet Leased Lines</option>
+          <option value="hosting">Hosting Services</option>
+          <option value="other">Other / Multiple</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="block text-xs font-display font-semibold tracking-widest uppercase text-[#6b7280] mb-2">Message</label>
+        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-[#e2eaf2] text-sm text-[#061523] focus:outline-none focus:border-[#0d5578] transition-colors resize-none" placeholder="Tell us about your requirements..."></textarea>
+      </div>
+      <button type="submit" class="btn-clip bg-[#e31e24] text-white font-display font-bold tracking-widest uppercase px-8 py-4 text-sm hover:bg-[#b81820] transition-colors w-full">
+        Send Message
+      </button>
+    </form>
+
+    <div id="form-status" class="mt-4 text-sm hidden"></div>
+  </div>
+  */}
 
   <script is:inline src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&paint_origin=&libraries=geometry,search&v=weekly&loading=async&language=en&region=in&callback=onApiLoad"></script>
 </BaseLayout>
 
 <script>
-  import emailjs from '@emailjs/browser';
-  
+  // import emailjs from '@emailjs/browser';   // FORM DISABLED
+
   // Google Map Initialization
   (window as any).onApiLoad = () => {
-    const mumbai = { lat: 19.2064, lng: 72.8718 }; // Gokul Nagar, Kandivali East Coordinates
+    const mumbai = { lat: 19.2064, lng: 72.8718 }; // Gokul Nagar, Kandivali East
     const mapOptions = {
       zoom: 16,
       center: mumbai,
@@ -282,7 +371,7 @@ const iconPaths: Record<string, string> = {
       disableDefaultUI: true,
       zoomControl: true,
     };
-    
+
     const mapElement = document.getElementById('google-map');
     if (mapElement) {
       const map = new (window as any).google.maps.Map(mapElement, mapOptions);
@@ -300,56 +389,55 @@ const iconPaths: Record<string, string> = {
     const answer = item.querySelector(".faq-answer") as HTMLElement;
     const icon = item.querySelector(".faq-icon") as HTMLElement;
     const itemEl = item as HTMLElement;
-    
+
     toggle?.addEventListener("click", () => {
       const isOpen = !answer.classList.contains("opacity-0");
-      
+
       // Close all others
       document.querySelectorAll(".faq-item").forEach((otherItem) => {
         if (otherItem !== item) {
           otherItem.querySelector(".faq-answer")?.classList.add("opacity-0");
           (otherItem.querySelector(".faq-answer") as HTMLElement).style.maxHeight = "0";
           otherItem.querySelector(".faq-icon")?.classList.remove("rotate-180");
-          otherItem.classList.remove("bg-[#f0f4f8]", "border-[#0d5578]");
+          otherItem.classList.remove("border-[#0d5578]");
         }
       });
-      
+
       // Toggle current
       if (isOpen) {
         answer.classList.add("opacity-0");
         answer.style.maxHeight = "0";
         icon.classList.remove("rotate-180");
-        itemEl.classList.remove("bg-[#f0f4f8]", "border-[#0d5578]");
+        itemEl.classList.remove("border-[#0d5578]");
       } else {
         answer.classList.remove("opacity-0");
         answer.style.maxHeight = answer.scrollHeight + "px";
         icon.classList.add("rotate-180");
-        itemEl.classList.add("bg-[#f0f4f8]", "border-[#0d5578]");
+        itemEl.classList.add("border-[#0d5578]");
       }
     });
   });
 
-  // Initialize EmailJS
+  /* ── FORM / EMAILJS — DISABLED ─────────────────────────────
   emailjs.init(import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY);
 
-  // Form submission
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const status = document.getElementById("form-status") as HTMLElement;
-   
+
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     status.classList.remove("hidden", "text-[#0d5578]", "text-[#e31e24]");
     status.textContent = "Sending your message...";
     status.classList.add("text-[#0d5578]");
-    
+
     try {
       await emailjs.sendForm(
         import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
         import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
         form
       );
-      
+
       status.textContent = "Thank you! We'll get back to you within 4 hours.";
       form.reset();
     } catch (error) {
@@ -357,4 +445,5 @@ const iconPaths: Record<string, string> = {
       status.classList.add("text-[#e31e24]");
     }
   });
+  ─────────────────────────────────────────────────────────── */
 </script>

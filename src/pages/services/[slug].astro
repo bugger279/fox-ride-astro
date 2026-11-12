@@ -19,6 +19,11 @@ const prevService =
   currentIndex > 0 ? services[currentIndex - 1] : services[services.length - 1];
 const nextService =
   currentIndex < services.length - 1 ? services[currentIndex + 1] : services[0];
+
+// Features with descriptions longer than this (≈ 3+ lines in a half-width card)
+// span the full width of the grid. Tune the number if needed.
+const WIDE_DESC_CHARS = 130;
+const isWide = (desc: string) => desc.length > WIDE_DESC_CHARS;
 ---
 
 <BaseLayout title={service.title} description={service.description}>
@@ -110,11 +115,37 @@ const nextService =
             >
           </h2>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {
               service.features.map((feature, i) => (
                 <div
                   class="p-6 border border-[#e2eaf2] hover:border-[#0d5578] hover:shadow-md transition-all duration-300 group reveal"
+                  data-delay={i * 70}
+                >
+                  <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 bg-[#0d5578]/10 border border-[#0d5578]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0d5578] transition-colors">
+                      <div class="w-2 h-2 bg-[#0d5578] group-hover:bg-white transition-colors" />
+                    </div>
+                    <div>
+                      <h4 class="font-display font-bold text-[#061523] text-sm tracking-wide uppercase mb-1.5 group-hover:text-[#0d5578] transition-colors">
+                        {feature.title}
+                      </h4>
+                      <p class="text-[#6b7280] text-sm leading-relaxed">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div> -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {
+              service.features.map((feature, i) => (
+                <div
+                  class={`p-6 border border-[#e2eaf2] hover:border-[#0d5578] hover:shadow-md transition-all duration-300 group reveal ${
+                    isWide(feature.desc) ? "sm:col-span-2" : ""
+                  }`}
                   data-delay={i * 70}
                 >
                   <div class="flex items-start gap-4">
